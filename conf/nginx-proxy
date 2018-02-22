@@ -1,0 +1,12 @@
+#Setting up a simple Proxy Server. See https://nginx.org/en/docs/beginners_guide.html#proxy
+
+#Link this file into sites-enabled:
+#     sudo ln -s nginx-proxy /etc/nginx/sites-enabled/
+#Delete the default site from sites-enabled:
+#     sudo rm /etc/nginx/sites-enabled/default
+
+server {
+    location / { #Pass any request on port 80 to port 8080
+        proxy_pass http://localhost:8080;
+    }
+}
