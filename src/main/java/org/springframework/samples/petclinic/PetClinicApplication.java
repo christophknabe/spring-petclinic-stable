@@ -60,20 +60,28 @@ public class PetClinicApplication {
         final Map<String, String> environment = System.getenv();
         final List<Map.Entry<String, String>> envVariables = new ArrayList(environment.entrySet());
         Collections.sort(envVariables, (left, right) -> left.getKey().compareToIgnoreCase(right.getKey()));
-        System.out.println("\nEnvironment Variables");
-        System.out.println("=======================================================");
+        final StringBuilder out = new StringBuilder();
+        out.append("\nEnvironment Variables\n");
+        out.append("=======================================================\n");
         for(final Map.Entry<String, String> envVar: envVariables){
-            System.out.println(envVar.getKey() + "=" + envVar.getValue());
+            out.append(envVar.getKey());
+            out.append("=");
+            out.append(envVar.getValue());
+            out.append('\n');
         }
+        System.out.println(out);
     }
 
     /**Displays the names of all Spring beans in the given application context.*/
     private void _displayAllBeans(final ApplicationContext applicationContext) {
-        System.out.println("\n====================Application.displayAllBeans====================");
+        final StringBuilder out = new StringBuilder();
+        out.append("\n====================Application.displayAllBeans====================\n");
         final String[] allBeanNames = applicationContext.getBeanDefinitionNames();
         for (final String beanName : allBeanNames) {
-            System.out.println(beanName);
+            out.append(beanName);
+            out.append('\n');
         }
+        System.out.println(out);
     }
 
 }
